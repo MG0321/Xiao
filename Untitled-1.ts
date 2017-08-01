@@ -15,11 +15,11 @@
     //focus on the editor of document
     document.getElementsByTagName('textarea')[0].focus();
     this.collaboration.init(this.editor, this.sessionId);
-    //apply the changes from other clients
     this.editor.lastAppliedChange = null;
     //apply keyboard change
     this.editor.on('change', (e) => {
       console.log("editor changes: " + JSON.stringify(e));
+      //apply the changes from other clients
       if (this.editor.lastAppliedChange != e) {
         this.collaboration.change(JSON.stringify(e));
       }
