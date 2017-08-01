@@ -61,3 +61,34 @@ router.post('/build_and_run', jsonParser, function (req, res) {
 })
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route("/build_and_run",methods=["POST"])
+def build_and_run():
+    data=json.loads(request.data.decode('utf-8'))
+
+    if 'code' not in data or 'lang' not in data:
+        return "You should provide both 'code' and 'lang'"
+    code=data['code']
+    lang=data['lang']
+
+    print("API got called with code: %s in %s" % (code, lang))
+    result = eu.build_and_run(code, lang)
+    return jsonify(result)
